@@ -1,0 +1,88 @@
+{
+  "Rows": {
+    "A": [
+      {
+        "Name": "A1",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "A2",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "A3",
+        "SeatAvailability": "Available"
+      },
+      {
+        "Name": "A4",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "A5",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "A6",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "A7",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "A8",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "A9",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "A10",
+        "SeatAvailability": "Confirmed"
+      }
+    ],
+    "B": [
+      {
+        "Name": "B1",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "B2",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "B3",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "B4",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "B5",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "B6",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "B7",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "B8",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "B9",
+        "SeatAvailability": "Confirmed"
+      },
+      {
+        "Name": "B10",
+        "SeatAvailability": "Confirmed"
+      }
+    ]
+  }
+}
