@@ -7,7 +7,7 @@ namespace CinemaAllocations.Domain
         public int PartyRequested { get; }
         
         public List<Seat> AllocatedSeats { get; } = new List<Seat>();
-       
+        
         public bool IsFulfilled => AllocatedSeats.Count == PartyRequested;
 
         public SeatAllocation(int partyRequested)
