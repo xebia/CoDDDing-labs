@@ -17,6 +17,16 @@ A seat is reserved when his number is surrounded with parenthesis.
 
 ```
 
+### O3 Auditorium-2
+
+```python
+
+      1   2   3   4   5   6   7   8   9  10
+ A :  1   1  (1) (1) (1) (1) (1)  1   1   1
+ B : (1) (1) (1) (1) (1) (1) (1) (1) (1) (1)
+
+```
+
 ### Dock Street Auditorium-3
 
 ```python
