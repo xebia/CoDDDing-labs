@@ -15,7 +15,7 @@ public class TicketBoothShould {
     private static final String DOCK_STREET = "3";
     private static final String MADISON_THEATER = "5";
 
-    private MovieScreeningRepository repository = new StubMovieScreeningRepository();
+    private MovieScreeningRepository repository =  new StubMovieScreeningRepository();
 
     public TicketBoothShould() throws IOException {
     }
@@ -80,7 +80,7 @@ public class TicketBoothShould {
         TicketBooth ticketBooth = new TicketBooth(repository);
         SeatsAllocated seatsAllocated = ticketBooth.allocateSeats(new AllocateSeats(O3_AUDITORIUM, partyRequested));
 
-        throw new UnsupportedOperationException("NOT IMPLEMENTED");
+        assertThat(seatsAllocated).isInstanceOf(NoPossibleAdjacentSeatsFound.class);
     }
 
 }
