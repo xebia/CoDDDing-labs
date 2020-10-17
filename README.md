@@ -1,6 +1,4 @@
-# CoDDDing-labs
-
-This project is a Xebia repo guiding you through several labs of Domain-Driven Design coding.
+# Cinema allocations bounded context workshop
 
 ## Requirements
 
@@ -25,3 +23,9 @@ We use the following naive first design of our model to implement with outside-i
 ![Proposed Model](proposed-model.jpg)
 
 the result can be find at lab1end
+
+### lab 2
+
+We have added two more test to `TicketBoothShould` for you to implement. In this lab you will focus on implementing the adjacent seating rule. We have added a new Stub for you to use which you can checkout in `/Stubs/README.MD`. The model has not changed!
+
+The result can be found in lab2end

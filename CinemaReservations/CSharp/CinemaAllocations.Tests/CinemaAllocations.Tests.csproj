@@ -18,12 +18,16 @@
 
   <ItemGroup>
     <Content Include="..\..\..\Stubs\MovieScreenings\1-ford-theater.json" />
+    <Content Include="..\..\..\Stubs\MovieScreenings\2-o3-auditorium.json" />
     <Content Include="..\..\..\Stubs\MovieScreenings\3-dock-street.json" />
     <Content Include="..\..\..\Stubs\MovieScreenings\5-madison-theather.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Update="..\..\..\Stubs\MovieScreenings\1-ford-theater.json" Link="MovieScreenings\1-ford-theater.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="..\..\..\Stubs\MovieScreenings\2-o3-auditorium.json" Link="MovieScreenings\2-o3-auditorium.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="..\..\..\Stubs\MovieScreenings\3-dock-street.json" Link="MovieScreenings\3-dock-street.json">
