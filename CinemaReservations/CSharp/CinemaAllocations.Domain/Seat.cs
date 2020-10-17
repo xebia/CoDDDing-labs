@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Value;
 
 namespace CinemaAllocations.Domain
@@ -6,13 +7,31 @@ namespace CinemaAllocations.Domain
     public class Seat : ValueType<Seat>
     {
         public string RowName { get; }
+       
         public uint Number { get; }
 
         public SeatAvailability SeatAvailability { get; }
 
-        protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
+        public Seat(string rowName, uint number, SeatAvailability seatAvailability)
         {
-            return new object[] {RowName, Number, SeatAvailability};
+            RowName = rowName;
+            Number = number;
+            SeatAvailability = seatAvailability;
+        }
+
+        public Seat ReserveSeats()
+        {
+            return new Seat(RowName, Number, SeatAvailability.Reserved);
+        }
+
+        public Boolean IsAvailable()
+        {
+            return SeatAvailability == SeatAvailability.Available;
+        }
+
+        public Boolean SameSeatLocation(Seat seat)
+        {
+            return RowName.Equals(seat.RowName) && Number == seat.Number;
         }
 
         public override string ToString()
@@ -20,11 +39,9 @@ namespace CinemaAllocations.Domain
             return $"{RowName}{Number}";
         }
 
-        public Seat(string rowName, uint number, SeatAvailability seatAvailability)
+        protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            RowName = rowName;
-            Number = number;
-            SeatAvailability = seatAvailability;
+            return new object[] {RowName, Number, SeatAvailability};
         }
     }
 }
