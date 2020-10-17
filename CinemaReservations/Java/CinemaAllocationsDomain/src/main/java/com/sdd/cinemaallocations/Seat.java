@@ -3,6 +3,11 @@ package com.sdd.cinemaallocations;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @EqualsAndHashCode
 @Getter
 public class Seat {
@@ -27,6 +32,18 @@ public class Seat {
 
     public boolean sameSeatLocation(Seat seat) {
         return rowName.equals(seat.rowName) && number == seat.number;
+    }
+
+    public boolean isAdjacentWith(List<Seat> seats) {
+        List<Seat> orderedSeats = seats.stream().sorted(Comparator.comparing(Seat::number)).collect(Collectors.toCollection(ArrayList::new));
+
+        for(Seat seat : orderedSeats) {
+            if (number +  1 == seat.number || number -  1 == seat.number) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
