@@ -6,13 +6,11 @@ namespace CinemaAllocations.Domain
     {
         public int PartyRequested { get; }
         
-        private readonly List<Seat> _seats;
-        
-        public IReadOnlyList<Seat> Seats => _seats;
+        public List<Seat> ReservedSeats { get; }
 
-        public SeatsAllocated(List<Seat> seats, int partyRequested)
+        public SeatsAllocated(List<Seat> reservedSeats, int partyRequested)
         {
-            _seats = seats;
+            ReservedSeats = reservedSeats;
             PartyRequested = partyRequested;
         }
     }
