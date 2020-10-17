@@ -22,16 +22,21 @@ public class Row {
 
         for (Seat seat : this.seats()) {
 
-            if (seat.isAvailable())
-            {
+            if (seat.isAvailable() && (allocation.allocatedSeats.isEmpty() || seat.isAdjacentWith(allocation.allocatedSeats))) {
                 allocation.addSeat(seat);
 
-                if(allocation.isFulfilled()) {
+                if (allocation.isFulfilled()) {
                     return new SeatsAllocated(allocateSeats.partyRequested(), allocation.allocatedSeats());
                 }
+            } else {
+                allocation = new SeatAllocation(allocateSeats.partyRequested());
             }
         }
         return new NoPossibleAllocationsFound(allocateSeats.partyRequested(), new ArrayList<>());
+    }
+
+    public int returnNumberOfSeatsAvailable() {
+        return (int) seats.stream().filter(Seat::isAvailable).count();
     }
 
     public Row makeSeatsReserved(List<Seat> updatedSeats) {

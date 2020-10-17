@@ -14,6 +14,7 @@ public class MovieScreening {
     }
 
     public SeatsAllocated allocateSeats(AllocateSeats allocateSeats) {
+        int numberOfSeatsAvailable = 0;
         for( Row row : rows.values()) {
             SeatsAllocated seatsAllocated = row.allocateSeats(allocateSeats);
             if (!(seatsAllocated instanceof NoPossibleAllocationsFound)) {
@@ -21,6 +22,10 @@ public class MovieScreening {
                 rows.put(updatedRow.name(), updatedRow);
                 return seatsAllocated;
             }
+            numberOfSeatsAvailable = numberOfSeatsAvailable + row.returnNumberOfSeatsAvailable();
+        }
+        if(numberOfSeatsAvailable >= allocateSeats.partyRequested()) {
+            return new NoPossibleAdjacentSeatsFound(allocateSeats.partyRequested(), new ArrayList<>());
         }
         return new NoPossibleAllocationsFound(allocateSeats.partyRequested(), new ArrayList<>());
     }
