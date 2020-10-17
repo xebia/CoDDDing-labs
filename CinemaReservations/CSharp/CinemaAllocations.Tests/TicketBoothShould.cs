@@ -8,9 +8,10 @@ namespace CinemaAllocations.Tests
     public class SeatsAllocatorShould
     {
         private const string FordTheaterId = "1";
+        private const string O3AuditoriumId = "2";
         private const string DockStreetId = "3";
         private const string MadisonTheatherId = "5";
-        
+
         [Fact]
         public void Reserve_one_seat_when_available()
         {
@@ -24,7 +25,7 @@ namespace CinemaAllocations.Tests
             Check.That(seatsAllocated.ReservedSeats).HasSize(1);
             Check.That(seatsAllocated.ReservedSeats[0].ToString()).IsEqualTo("A3");
         }
-        
+
         [Fact]
         public void Reserve_multiple_seats_when_available()
         {
@@ -36,9 +37,7 @@ namespace CinemaAllocations.Tests
             var seatsAllocated = ticketBooth.AllocateSeats(new AllocateSeats(DockStreetId, partyRequested));
 
             Check.That(seatsAllocated.ReservedSeats).HasSize(3);
-            Check.That(seatsAllocated.ReservedSeats[0].ToString()).IsEqualTo("A6");
-            Check.That(seatsAllocated.ReservedSeats[1].ToString()).IsEqualTo("A7");
-            Check.That(seatsAllocated.ReservedSeats[2].ToString()).IsEqualTo("A8");
+            Check.That(seatsAllocated.SeatNames()).ContainsExactly("A6", "A7", "A8");
         }
 
         [Fact]
@@ -63,9 +62,35 @@ namespace CinemaAllocations.Tests
             var ticketBooth = new TicketBooth(repository);
 
             var seatsAllocated = ticketBooth.AllocateSeats(new AllocateSeats(MadisonTheatherId, partyRequested));
-            
-            Check.That(seatsAllocated).IsInstanceOf<TooManyTicketsRequested>();
 
+            Check.That(seatsAllocated).IsInstanceOf<TooManyTicketsRequested>();
+        }
+
+        [Fact]
+        public void Reserve_three_adjacent_seats_when_available()
+        {
+            const int partyRequested = 3;
+
+            IMovieScreeningRepository repository = new StubMovieScreeningRepository();
+            var ticketBooth = new TicketBooth(repository);
+
+            var seatsAllocated = ticketBooth.AllocateSeats(new AllocateSeats(O3AuditoriumId, partyRequested));
+
+            Check.That(seatsAllocated.ReservedSeats).HasSize(3);
+            Check.That(seatsAllocated.SeatNames()).ContainsExactly("A8", "A9", "A10");
+        }
+
+        [Fact]
+        public void Return_NoPossibleAdjacentSeatsFound_when_4_tickets_are_requested()
+        {
+            const int partyRequested = 4;
+
+            IMovieScreeningRepository repository = new StubMovieScreeningRepository();
+            var ticketBooth = new TicketBooth(repository);
+
+            var seatsAllocated = ticketBooth.AllocateSeats(new AllocateSeats(O3AuditoriumId, partyRequested));
+
+            Check.That(true).IsFalse();
         }
     }
 }
