@@ -2,6 +2,7 @@ package com.sdd.cinemaallocationsinfra.repository;
 
 import com.sdd.cinemaallocations.MovieScreening;
 import com.sdd.cinemaallocations.MovieScreeningRepository;
+import com.sdd.cinemaallocationsinfra.repository.model.JPAMovieScreening;
 
 public class JPAMovieScreeningRepository implements MovieScreeningRepository {
 
@@ -13,7 +14,7 @@ public class JPAMovieScreeningRepository implements MovieScreeningRepository {
 
     @Override
     public MovieScreening findMovieScreeningById(String screeningId) {
-        throw new UnsupportedOperationException("NOT IMPLEMENTED FUNCTION IN JPAMovieScreeningRepository");
+        return springMovieScreeningRepository.findById(screeningId).map(JPAMovieScreening::toDomain).orElse(null);
     }
 
 }

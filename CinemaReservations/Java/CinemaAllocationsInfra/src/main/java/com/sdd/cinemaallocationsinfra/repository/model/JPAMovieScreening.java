@@ -1,14 +1,15 @@
 package com.sdd.cinemaallocationsinfra.repository.model;
 
 import com.sdd.cinemaallocations.MovieScreening;
+import com.sdd.cinemaallocations.Row;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -21,9 +22,23 @@ public class JPAMovieScreening {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @MapKey(name = "name")
+    private Map<String, JPARow> jpaRows = new HashMap<>();
 
     public MovieScreening toDomain() {
-        throw new UnsupportedOperationException("NOT IMPLEMENTED FUNCTION IN JPAMovieScreeningRepository");
+        Map<String, Row> rows = new HashMap<>();
+
+        for (Map.Entry<String, JPARow> jpaRow : jpaRows.entrySet()) {
+
+            rows.put(jpaRow.getKey(), jpaRow.getValue().toDomain());
+
+        }
+
+        return new MovieScreening(rows);
     }
 
 
