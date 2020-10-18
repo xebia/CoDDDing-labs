@@ -15,7 +15,9 @@ namespace CinemaAllocations.Infra.DataPersistence
 
         public Domain.MovieScreening FindMovieScreeningById(string screeningId)
         {
-            throw new NotImplementedException("NOT IMPLEMENTED FUNCTION IN MovieScreeningRepository");
+            var movieScreeningDataModel = _myContext.MovieScreenings.SingleOrDefault(x => x.Id == screeningId);
+
+            return movieScreeningDataModel?.ToDomainModel();
         }
 
         public void Dispose()
