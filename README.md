@@ -29,3 +29,18 @@ the result can be find at lab1end
 We have added two more test to `TicketBoothShould` for you to implement. In this lab you will focus on implementing the adjacent seating rule. We have added a new Stub for you to use which you can checkout in `/Stubs/README.MD`. The model has not changed!
 
 The result can be found in lab2end
+
+### lab 3 - Ports & Adapters / Hexagonal architecture
+
+In lab 3 you will start implementing the ORM side of the Hexagonal by implementing the MovieScreeningAdapter and reuse the same TicketBoothShould test, but now against an in memory database instead of a stub. We have added the a seperate project that contains the infra part. It is your job to make the TicketBootShould in the infra test pass and not change anything to your domain code. It does however require you to adjust both test code and infra side code.
+
+![Hexagonal](lab3beginhexagonal.jpg)
+
+#### Java
+
+In java we make use of spring boot to start our instance and test against TicketBooth with h2 as an in-memory database. You can find all the code you need in `CinemaAllocationsInfra` and specificly for this lab un der `repository`. Spring boot is already setup and ready to go!
+
+#### C# 
+
+In C# you can find the code under `CinemaAllocations.Infra.DataPersistence` and `CinemaAllocations.Tests.Integration`. EntityFramework is already setup in the tests.
+
