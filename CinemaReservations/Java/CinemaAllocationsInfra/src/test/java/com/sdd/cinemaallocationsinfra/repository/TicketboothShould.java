@@ -1,7 +1,7 @@
 package com.sdd.cinemaallocationsinfra.repository;
 
 import com.sdd.cinemaallocations.*;
-import com.sdd.cinemaallocationsinfra.repository.helpers.Given;
+import com.sdd.cinemaallocationsinfra.helpers.Given;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

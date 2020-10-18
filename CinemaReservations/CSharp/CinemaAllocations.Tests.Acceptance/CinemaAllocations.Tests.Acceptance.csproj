@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.9" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+        <PackageReference Include="NFluent" Version="2.7.0" />
+        <PackageReference Include="xunit" Version="2.4.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector" Version="1.3.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CinemaAllocations.Infra.DataPersistence\CinemaAllocations.Infra.DataPersistence.csproj" />
+      <ProjectReference Include="..\CinemaAllocations.Infra.RestApi\CinemaAllocations.Infra.RestApi.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\..\..\Stubs\MovieScreenings\1-ford-theater.json" />
+        <Content Include="..\..\..\Stubs\MovieScreenings\2-o3-auditorium.json" />
+        <Content Include="..\..\..\Stubs\MovieScreenings\3-dock-street.json" />
+        <Content Include="..\..\..\Stubs\MovieScreenings\5-madison-theather.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Update="..\..\..\Stubs\MovieScreenings\1-ford-theater.json" Link="MovieScreenings\1-ford-theater.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="..\..\..\Stubs\MovieScreenings\2-o3-auditorium.json" Link="MovieScreenings\2-o3-auditorium.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="..\..\..\Stubs\MovieScreenings\3-dock-street.json" Link="MovieScreenings\3-dock-street.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="..\..\..\Stubs\MovieScreenings\5-madison-theather.json" Link="MovieScreenings\5-madison-theather.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+</Project>

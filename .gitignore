@@ -37,3 +37,5 @@ artifacts/
 **/Properties/launchSettings.json
 
 *.user
+
+target/

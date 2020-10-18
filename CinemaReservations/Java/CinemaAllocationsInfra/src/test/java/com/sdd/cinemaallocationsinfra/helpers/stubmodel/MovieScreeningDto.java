@@ -1,12 +1,8 @@
-package com.sdd.cinemaallocationsinfra.repository.helpers.stubmodel;
+package com.sdd.cinemaallocationsinfra.helpers.stubmodel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.sdd.cinemaallocations.MovieScreening;
-import com.sdd.cinemaallocations.Row;
-import com.sdd.cinemaallocations.Seat;
-import com.sdd.cinemaallocations.SeatAvailability;
 import com.sdd.cinemaallocationsinfra.repository.model.JPAMovieScreening;
 import com.sdd.cinemaallocationsinfra.repository.model.JPARow;
 import com.sdd.cinemaallocationsinfra.repository.model.JPASeat;

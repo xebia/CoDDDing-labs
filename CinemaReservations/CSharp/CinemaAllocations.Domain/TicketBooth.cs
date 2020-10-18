@@ -3,7 +3,7 @@
     public class TicketBooth
     {
         private readonly IMovieScreeningRepository _movieScreeningRepository;
-        private readonly int MAXIMUM_NUMBER_OF_ALLOWED_TICKETS = 8;
+        private const int MaximumNumberOfAllowedTickets = 8;
 
         public TicketBooth(IMovieScreeningRepository repo)
         {
@@ -12,7 +12,7 @@
 
         public SeatsAllocated AllocateSeats(AllocateSeats allocateSeats)
         {
-            if (allocateSeats.PartyRequested > MAXIMUM_NUMBER_OF_ALLOWED_TICKETS)
+            if (allocateSeats.PartyRequested > MaximumNumberOfAllowedTickets)
             {
                 return new TooManyTicketsRequested(allocateSeats.PartyRequested);
             }

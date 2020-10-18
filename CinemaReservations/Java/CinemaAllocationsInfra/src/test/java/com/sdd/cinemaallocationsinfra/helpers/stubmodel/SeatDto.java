@@ -1,4 +1,4 @@
-package com.sdd.cinemaallocationsinfra.repository.helpers.stubmodel;
+package com.sdd.cinemaallocationsinfra.helpers.stubmodel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;
