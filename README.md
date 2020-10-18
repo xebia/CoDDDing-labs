@@ -44,3 +44,9 @@ In java we make use of spring boot to start our instance and test against Ticket
 
 In C# you can find the code under `CinemaAllocations.Infra.DataPersistence` and `CinemaAllocations.Tests.Integration`. EntityFramework is already setup in the tests.
 
+
+### Lab 4 - Ports & Adapters / Hexagonal architecture
+
+In lab 3 you will start implementing the Rest controller side of the Hexagonal by implementing the MovieScreeningController and reuse the same tests from TicketBoothShould test, but now against run against a rest endpoint. You run the test with an in-memory database. It is your job to make the MovieScreeningShould test work.
+
+![Hexagonal](lab4beginhexagonal.jpg)

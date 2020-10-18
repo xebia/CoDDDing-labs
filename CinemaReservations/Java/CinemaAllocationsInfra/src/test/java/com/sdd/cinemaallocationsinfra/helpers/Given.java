@@ -1,11 +1,11 @@
-package com.sdd.cinemaallocationsinfra.repository.helpers;
+package com.sdd.cinemaallocationsinfra.helpers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import com.sdd.cinemaallocations.TicketBooth;
 import com.sdd.cinemaallocationsinfra.repository.JPAMovieScreeningRepository;
 import com.sdd.cinemaallocationsinfra.repository.SpringMovieScreeningRepository;
-import com.sdd.cinemaallocationsinfra.repository.helpers.stubmodel.MovieScreeningDto;
+import com.sdd.cinemaallocationsinfra.helpers.stubmodel.MovieScreeningDto;
 import com.sdd.cinemaallocationsinfra.repository.model.JPAMovieScreening;
 
 import java.io.IOException;
