@@ -17,6 +17,13 @@ namespace CinemaAllocations.Infra.DataPersistence
         {
             var movieScreeningDataModel = _myContext.MovieScreenings.SingleOrDefault(x => x.Id == screeningId);
 
+            // there is a open bug with EF Core and the load of the related entities
+            if (movieScreeningDataModel != null && movieScreeningDataModel.Rows == null)
+            {
+                movieScreeningDataModel.Rows = _myContext.Rows
+                    .Where(x => x.MovieScreening.Id.Equals(movieScreeningDataModel.Id)).ToList();
+            }
+
             return movieScreeningDataModel?.ToDomainModel();
         }
 

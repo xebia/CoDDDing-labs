@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CinemaAllocations.Domain\CinemaAllocations.Domain.csproj" />
+      <ProjectReference Include="..\CinemaAllocations.Infra.DataPersistence\CinemaAllocations.Infra.DataPersistence.csproj" />
     </ItemGroup>
 
 

@@ -1,5 +1,5 @@
-using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using CinemaAllocations.Infra.DataPersistence;
@@ -17,25 +17,64 @@ namespace CinemaAllocations.Tests.Acceptance
                 get
                 {
                     const string fordTheaterId = "1";
-                
-                    RetrieveMovieScreeningFromJson(fordTheaterId);
+
+                    LoadMovieScreeningFromJson(fordTheaterId);
 
                     return fordTheaterId;
                 }
             }
 
-            private static void RetrieveMovieScreeningFromJson(string showId)
+            internal static string DockStreetId
+            {
+                get
+                {
+                    const string dockStreetId = "3";
+
+                    LoadMovieScreeningFromJson(dockStreetId);
+
+                    return dockStreetId;
+                }
+            }
+
+            internal static string MadisonTheatherId
+            {
+                get
+                {
+                    const string madisonTheatherId = "5";
+
+                    LoadMovieScreeningFromJson(madisonTheatherId);
+
+                    return madisonTheatherId;
+                }
+            }
+
+            public static string O3AuditoriumId
+            {
+                get
+                {
+                    const string o3AuditoriumId = "2";
+
+                    LoadMovieScreeningFromJson(o3AuditoriumId);
+
+                    return o3AuditoriumId;
+                }
+            }
+
+            private static void LoadMovieScreeningFromJson(string showId)
             {
                 var options = new DbContextOptionsBuilder<CinemaContext>()
-                    .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                    .UseInMemoryDatabase(databaseName: ApiWebApplicationFactory.DatabaseName)
                     .Options;
 
                 using var cinemaContext = new CinemaContext(options);
-                LoadMovieScreeningIfDoesExists(showId, cinemaContext);
+                AddMovieScreeningIfDoesExists(showId, cinemaContext);
             }
 
-            private static void LoadMovieScreeningIfDoesExists(string showId, CinemaContext cinemaContext)
+            private static void AddMovieScreeningIfDoesExists(string showId, CinemaContext cinemaContext)
             {
+                if (cinemaContext.MovieScreenings.Any(x => x.Id.Equals(showId)))
+                    return;
+
                 var directoryName = $"{GetExecutingAssemblyDirectoryFullPath()}\\MovieScreenings\\";
 
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||

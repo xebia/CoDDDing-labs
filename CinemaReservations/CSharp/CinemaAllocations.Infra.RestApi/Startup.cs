@@ -1,3 +1,5 @@
+using CinemaAllocations.Domain;
+using CinemaAllocations.Infra.DataPersistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +21,11 @@ namespace CinemaAllocations.Infra.RestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddTransient<TicketBooth>();
+            services.AddTransient<IMovieScreeningRepository, MovieScreeningRepository>();
+
+            // In this example it is missing the non-inmemory test database, like a document and relational one. I'm not adding it, to decrease the complexity.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

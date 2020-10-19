@@ -50,3 +50,15 @@ In C# you can find the code under `CinemaAllocations.Infra.DataPersistence` and 
 In lab 3 you will start implementing the Rest controller side of the Hexagonal by implementing the MovieScreeningController and reuse the same tests from TicketBoothShould test, but now against run against a rest endpoint. You run the test with an in-memory database. It is your job to make the MovieScreeningShould test work.
 
 ![Hexagonal](lab4beginhexagonal.jpg)
+
+### Bonus
+
+In case you have not run into it yet there are two major bugs in the current state of the software. Perhaps you already solved or figured it out yourselve which is perfect! As a bonus you can start working on solving the bugs
+
+#### No moviescreening found
+
+In the tests we have not covered that we cannot find a MovieScreening. As from a business perspective this should not be able to happen, but as you probably know it CAN happen. This is why the different perceptions come in during modelling to catch these bugs. Write a test code that checks if a moviescreening found en think about what to return in that case. Start with in domain side and work your way up to the outside system test.
+
+#### Saving the new state
+
+At this moment the ticketbooth returns SeatsAllocated when the MovieScreening allocated new seats, but it never saves it while the tests still succeed. What you want to check during the tests is that the state is saved. Add this check to the tests and implement the state save.
